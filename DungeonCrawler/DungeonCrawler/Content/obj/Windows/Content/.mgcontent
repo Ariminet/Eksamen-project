@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/assets/font/Fonten.spritefont</File>
+    <File>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/assets/gameImages/floorSmall.png</File>
+    <File>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/assets/player/heroDown.png</File>
+    <File>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/assets/player/heroLeft.png</File>
+    <File>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/assets/player/heroRight.png</File>
+    <File>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/assets/player/heroUp.png</File>
+    <File>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/assets/player/hero.png</File>
+    <File>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/assets/gameImages/walls/wall-1.png</File>
+    <File>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/assets/gameImages/walls/wall-2.png</File>
+    <File>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/assets/gameImages/walls/wall-3.png</File>
+    <File>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/assets/gameImages/walls/wall-4.png</File>
+    <File>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/assets/gameImages/walls/wall-5.png</File>
+    <File>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/assets/gameImages/walls/wall-6.png</File>
+    <File>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/assets/gameImages/walls/wall-7.png</File>
+    <File>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/assets/gameImages/walls/wall-8.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
