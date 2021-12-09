@@ -88,10 +88,12 @@ namespace DungeonCrawler
                 if (isSneaking)
                 {
                     velocity = 5;
+                    speed = speed * 2;
                 }
                 else
                 {
                     velocity = 2;
+                    speed = speed / 2;
                 }
             }
         }
