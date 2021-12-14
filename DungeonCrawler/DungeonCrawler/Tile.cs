@@ -37,19 +37,28 @@ namespace DungeonCrawler
       
 
 
-        public static void CreateMap(GameTime gameTime, GraphicsDeviceManager _graphics,Texture2D floorTexture, Texture2D[] textures,int newMap)
+        public static void CreateMap(GameTime gameTime, GraphicsDeviceManager _graphics,Texture2D floorTexture, Texture2D[] textures, Texture2D door, int newMap)
         {
             int gameWidth = _graphics.PreferredBackBufferWidth - radius;
             int gameHeight = _graphics.PreferredBackBufferHeight - radius;
             // Laver en ny liste med tiles for hver class Tile der instancieres
             tiles = new List<Tile>();
 
+            
 
+            
             for (int y = 64; y <= gameHeight; y += 128)
             {
                 for (int x = 64; x <= gameWidth; x += 128)
                 {
-                    if(x == 64 || x == 1216 )
+                    if(x == 576 || y == 320) {
+                        tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door));
+                    }
+                    else
+                    {
+                        
+                    
+                    if (x == 64 || x == 1216 )
                     {
                         //Rotate texture on both sides
                         if(x == 64 && y == 64)
@@ -92,7 +101,7 @@ namespace DungeonCrawler
 
 
                     }
-
+                    }
 
                 }
 
