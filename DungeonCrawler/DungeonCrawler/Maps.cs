@@ -148,6 +148,7 @@ namespace DungeonCrawler
         {
             foreach (Tile t in mapsList[newMap].map)
             {
+              
                 
                 if (t.tileTexture.ToString() == "./assets/gameImages/floorSmall" || t.tileTexture.ToString() == "./assets/gameImages/door/door") {
                     int canMoveX = (int)t.TileCoord.X - (int)player.TileCoord.X;

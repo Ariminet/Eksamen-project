@@ -51,6 +51,7 @@ namespace DungeonCrawler
 
         Player player = new Player();
 
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -64,6 +65,7 @@ namespace DungeonCrawler
             _graphics.PreferredBackBufferWidth = 1280;
             _graphics.PreferredBackBufferHeight = 768;
             _graphics.ApplyChanges();
+
 
             base.Initialize();
         }
@@ -116,6 +118,7 @@ namespace DungeonCrawler
             // TODO: Add your update logic here
             player.Update(gameTime);
 
+
             //Checks if game is started
             if (!gameStarted)
             {
@@ -134,9 +137,88 @@ namespace DungeonCrawler
             }
             if(gameStarted)
             {
+
+                   
+                    
+
+                if (player.enterDoor)
+                {
+                    foreach (Tile t in Maps.mapsList[currentLevel].Map)
+                    {
+
+                        if (Vector2.Distance(t.Position, player.Position) < 164 && t.DoorLevel > -1 )
+                        {
+
+                            
+
+                            if (player.TileCoord == new Vector2(1,2) && player.OldTileCoord == new Vector2(1, 2))
+                            {
+                                
+                                player.TileCoord = new Vector2(8, player.TileCoord.Y);
+                                player.Position = new Vector2(128 * 8 + 64, player.Position.Y);
+                                player.TilePosition = player.Position;
+                                player.pickedPos = player.Position;
+                                player.Direction = Dir.Left;
+                                currentLevel = t.DoorLevel;
+                                player.enterDoor = false;
+                            }
+                            if (player.TileCoord == new Vector2(8, 2) && player.OldTileCoord == new Vector2(8, 2))
+                            {
+                                
+                                player.TileCoord = new Vector2(1, player.TileCoord.Y);
+                                player.Position = new Vector2(128 * 1 + 64, player.Position.Y);
+                                player.TilePosition = player.Position;
+                                player.pickedPos = player.Position;
+                                player.Direction = Dir.Right;
+                                currentLevel = t.DoorLevel;
+                                player.enterDoor = false;
+                            }
+                            if (player.TileCoord == new Vector2(4, 1) && player.OldTileCoord == new Vector2(4, 1))
+                            {
+                                
+                                player.TileCoord = new Vector2(player.TileCoord.X, 4);
+                                player.Position = new Vector2(player.Position.X, 128 * 4 + 64);
+                                player.TilePosition = player.Position;
+                                player.pickedPos = player.Position;
+                                player.Direction = Dir.Up;
+                                currentLevel = t.DoorLevel;
+                                player.enterDoor = false;
+                            }
+                            if (player.TileCoord == new Vector2(4, 4) && player.OldTileCoord == new Vector2(4, 4))
+                            {
+                                
+                                player.TileCoord = new Vector2(player.TileCoord.X, 1);
+                                player.Position = new Vector2(player.Position.X, 128 * 1 + 64);
+                                player.TilePosition = player.Position;
+                                player.pickedPos = player.Position;
+                                player.Direction = Dir.Down;
+                                currentLevel = t.DoorLevel;
+                                player.enterDoor = false;
+                            }
+                            
+                            
+
+                        }
+                        
+                        else
+                        {
+                            player.enterDoor = false;
+                        }
+                    }
+
+
+                    
+                }
+
+                
+                    
+                
                 // checks if player is at current tile  if he has picked a new tile it will render calculations on which tile 
                 // player picked and if tile picked is within players velocity(steps 1 step == 1 tile) and moves appropriately
-                Maps.PlayerMoves(player, currentLevel);
+                if(currentLevel < 15)
+                {
+                    Maps.PlayerMoves(player, currentLevel);
+                }
             }  
 
 
@@ -158,7 +240,15 @@ namespace DungeonCrawler
             // mapList == List of Maps which indicates array of tiles == mapLayout 
             // mapList[index] == level to be rendered
             //Map == List of tiles within the class Maps
-            Maps.DrawMap(_spriteBatch, player, currentLevel, gameFont);
+            if(currentLevel < 15)
+            {
+                Maps.DrawMap(_spriteBatch, player, currentLevel, gameFont);
+            }else
+            {
+                Maps.DrawMap(_spriteBatch, player, 14, gameFont);
+                _spriteBatch.DrawString(gameFont, "Congratulations you've won the game", new Vector2(_graphics.GraphicsDevice.Viewport.Width / 2, _graphics.GraphicsDevice.Viewport.Height / 2), Color.White);
+            }
+            
 
 
             /*
@@ -187,25 +277,46 @@ namespace DungeonCrawler
                 }
             }
             }
-            _spriteBatch.DrawString(gameFont, "GameLevel: " + Maps.mapsList[currentLevel].MapLevel, new Vector2(100, 0), Color.White);
-            */ 
-            
+           
+            */
+
             //_spriteBatch.DrawString(gameFont, "GameStarted: " + gameStarted, new Vector2(300, 300 ), Color.White);
 
             //_spriteBatch.Draw(playerSprite, new Vector2(player.Position.X - floor.Width / 2, player.Position.Y  - floor.Height / 2), Color.White);
 
             player.anim.Draw(_spriteBatch);
-            
+            if(currentLevel < 15)
+            {
+                _spriteBatch.DrawString(gameFont, "GameLevel: " + Maps.mapsList[currentLevel].MapLevel, new Vector2(100, 0), Color.White);
+            }
+            _spriteBatch.DrawString(gameFont, "Player Coordinate" + player.TileCoord, new Vector2(100, 100), Color.White);
+            _spriteBatch.DrawString(gameFont, " Old Player Coordinate" + player.OldTileCoord, new Vector2(100, 200), Color.White);
+            _spriteBatch.DrawString(gameFont, "currentTile" + player.Position, new Vector2(100, 300), Color.White);
+            _spriteBatch.DrawString(gameFont, "Enter Door  " + player.enterDoor, new Vector2(500, 400), Color.White);
 
-            /*
-            _spriteBatch.DrawString(gameFont, "" + player.TileCoord, new Vector2(100, 100), Color.White);
-            _spriteBatch.DrawString(gameFont, "Moving" + player.IsMoving, new Vector2(500, 100), Color.White);
-            _spriteBatch.DrawString(gameFont, "currentTile" + player.Position, new Vector2(500, 200), Color.White);
-            _spriteBatch.DrawString(gameFont, "Go to Tile" + player.TilePosition, new Vector2(500, 400), Color.White);
-            _spriteBatch.DrawString(gameFont, "My Dier" + player.Direction, new Vector2(500, 500), Color.White);
-            _spriteBatch.DrawString(gameFont, "StepsX " + player.StepsX + "StepsY " + player.StepsY, new Vector2(500, 600), Color.White);
-            */
-            _spriteBatch.End();
+            if(currentLevel < 15)
+            {
+                foreach (Tile t in Maps.mapsList[currentLevel].Map)
+                {
+                    if (Vector2.Distance(t.Position, player.Position) < 164 && t.DoorLevel >= 0)
+                    {
+                        _spriteBatch.DrawString(gameFont, "closest door lvl " + t.DoorLevel, new Vector2(100, 500), Color.White);
+                    }
+
+                }
+            }
+            
+                /*
+                 _spriteBatch.DrawString(gameFont, "Picked coordinate" + player.pickedPos, new Vector2(100, 100), Color.White);
+                _spriteBatch.DrawString(gameFont, "Picked coordinate DISTANCE  " + Vector2.Distance(player.Position,player.pickedPos), new Vector2(100, 200), Color.White);
+
+                _spriteBatch.DrawString(gameFont, "Moving" + player.IsMoving, new Vector2(500, 100), Color.White);
+
+                _spriteBatch.DrawString(gameFont, "Go to Tile" + player.TilePosition, new Vector2(500, 400), Color.White);
+                _spriteBatch.DrawString(gameFont, "My Dier" + player.Direction, new Vector2(500, 500), Color.White);
+                _spriteBatch.DrawString(gameFont, "StepsX " + player.StepsX + "StepsY " + player.StepsY, new Vector2(500, 600), Color.White);
+                */
+                _spriteBatch.End();
 
             base.Draw(gameTime);
         }
