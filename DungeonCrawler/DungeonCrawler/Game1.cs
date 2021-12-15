@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace DungeonCrawler
 {
@@ -47,7 +49,9 @@ namespace DungeonCrawler
         
         SpriteFont gameFont;
 
-       
+        // sounds
+        Song bgSong;
+        SoundEffectInstance playerStep;
 
         Player player = new Player();
 
@@ -101,6 +105,13 @@ namespace DungeonCrawler
             // Loads door image to door variable
             door = Content.Load<Texture2D>("./assets/gameImages/door/door");
 
+            //load bg music
+            bgSong = Content.Load<Song>("./assets/music/bgMusic");
+            MediaPlayer.Volume = .25f;
+            MediaPlayer.Play(bgSong);
+
+
+         
 
             player.animations[0] = new SpriteAnimation(walkDown, 3, 8);
             player.animations[1] = new SpriteAnimation(walkUp, 3, 8);
@@ -138,6 +149,7 @@ namespace DungeonCrawler
             if(gameStarted)
             {
 
+                
                    
                     
 

@@ -26,7 +26,8 @@ namespace DungeonCrawler
 
         private static Random rNum = new Random();
 
-        
+        private Color textureColor;
+        private bool magicDoor = false;
 
         //Tile Constructor
         public Tile(Vector2 newPos, Vector2 newTileCoord, Texture2D texture)
@@ -42,6 +43,16 @@ namespace DungeonCrawler
             tileCoord = newTileCoord;
             tileTexture = texture;
             doorLevel = doorLvl;
+
+        }
+        public Tile(Vector2 newPos, Vector2 newTileCoord, Texture2D texture, int doorLvl, Color tColor, bool isMagic)
+        {
+            position = newPos;
+            tileCoord = newTileCoord;
+            tileTexture = texture;
+            doorLevel = doorLvl;
+            textureColor = tColor;
+            magicDoor = isMagic;
 
         }
 
@@ -60,6 +71,17 @@ namespace DungeonCrawler
       public int DoorLevel
         {
             get { return doorLevel; }
+        }
+
+        public bool MagicDoor
+        {
+            get { return magicDoor; }
+            set { magicDoor = value; }
+        }
+
+        public Color TextureColor
+        {
+            get { return textureColor; }
         }
 
         /// <summary>
@@ -150,7 +172,7 @@ namespace DungeonCrawler
                                     
                                     if (maybeDoor == 1 && x == 576 && y == 704)
                                     {
-                                        tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14)));
+                                        tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14), Color.Purple, true));
                                     }
 
                                     break;
@@ -168,7 +190,7 @@ namespace DungeonCrawler
                                         }
                                         if (maybeDoor == 1 && x == 576 && y == 704)
                                         {
-                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14)));
+                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14), Color.Purple, true));
                                         }
 
                                     }
@@ -198,7 +220,7 @@ namespace DungeonCrawler
                                         }
                                         if (maybeDoor == 1 && x == 576 && y == 704)
                                         {
-                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14)));
+                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14), Color.Purple, true));
                                         }
                                         if (y == 64 && x == 576)
                                         {
@@ -225,13 +247,13 @@ namespace DungeonCrawler
                                         // bottom center door
                                         if (maybeDoor == 1 && x == 576 && y == 704)
                                         {
-                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14)));
+                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14), Color.Purple, true));
                                         }
                                         // top center door
 
                                         if (maybeDoor == 1 && x == 576 && y == 64)
                                         {
-                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14)));
+                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14), Color.Purple, true));
                                         }
                                         
 
@@ -255,7 +277,7 @@ namespace DungeonCrawler
                                         // top center door
                                         if (maybeDoor == 1 && x == 576 && y == 64)
                                         {
-                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14)));
+                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14), Color.Purple, true));
                                         }
 
 
@@ -281,7 +303,7 @@ namespace DungeonCrawler
                                         maybeDoor = rNum.Next(0, 3);
                                         if (maybeDoor == 1 && x == 576 && y == 704)
                                         {
-                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14)));
+                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14), Color.Purple, true));
                                         }
 
 
@@ -305,7 +327,7 @@ namespace DungeonCrawler
                                         
                                         if (maybeDoor == 1 && x == 576 && y == 704)
                                         {
-                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14)));
+                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14), Color.Purple, true));
                                         }
                                         // top center door
                                         if (maybeDoor == 1 && x == 576 && y == 64)
@@ -336,7 +358,7 @@ namespace DungeonCrawler
                                         // top center door
                                         if (maybeDoor == 1 && x == 576 && y == 64)
                                         {
-                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14)));
+                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14), Color.Purple, true));
                                         }
 
 
@@ -366,7 +388,7 @@ namespace DungeonCrawler
 
                                         if (maybeDoor == 1 && x == 576 && y == 704)
                                         {
-                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14)));
+                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14), Color.Purple, true));
                                         }
 
 
@@ -390,12 +412,12 @@ namespace DungeonCrawler
 
                                         if (maybeDoor == 1 && x == 576 && y == 704)
                                         {
-                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14)));
+                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14), Color.Purple, true));
                                         }
                                         // top center door
                                         if (maybeDoor == 1 && x == 576 && y == 64)
                                         {
-                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14)));
+                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14), Color.Purple, true));
                                         }
 
 
@@ -418,7 +440,7 @@ namespace DungeonCrawler
                                         // top center door
                                         if (maybeDoor == 1 && x == 576 && y == 64)
                                         {
-                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14)));
+                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14), Color.Purple, true));
                                         }
 
 
@@ -445,7 +467,7 @@ namespace DungeonCrawler
 
                                         if (maybeDoor == 1 && x == 576 && y == 704)
                                         {
-                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14)));
+                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14), Color.Purple, true));
                                         }
                                         
 
@@ -472,12 +494,12 @@ namespace DungeonCrawler
                                         // bottom center door
                                         if (maybeDoor == 1 && x == 576 && y == 704)
                                         {
-                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14)));
+                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14), Color.Purple, true));
                                         }
                                         // top center door
                                         if (maybeDoor == 1 && x == 576 && y == 64)
                                         {
-                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14)));
+                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, rNum.Next(0, 14), Color.Purple, true));
                                         }
 
 

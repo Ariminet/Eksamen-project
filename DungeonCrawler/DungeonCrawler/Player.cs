@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using Microsoft.Xna.Framework.Audio;
 namespace DungeonCrawler
 {
     class Player
@@ -28,7 +28,6 @@ namespace DungeonCrawler
         private Vector2 tilePosition = new Vector2(192, 192);
 
         public bool enterDoor = false;
-
 
 
         public SpriteAnimation anim;
@@ -120,6 +119,7 @@ namespace DungeonCrawler
             {
                
                     pickedPos = new Vector2(mState.X, mState.Y);
+                
 
             }
         }
@@ -174,12 +174,15 @@ namespace DungeonCrawler
                         break;
                     case Dir.Up:
                         position.Y += moveDistance.Y * (speed * dt);
+                        
                         break;
                     case Dir.Left:
                         position.X += moveDistance.X * (speed * dt);
+                        
                         break;
                     case Dir.Right:
                         position.X += moveDistance.X * (speed * dt);
+                        
                         break;
                 }
             }
@@ -194,6 +197,7 @@ namespace DungeonCrawler
             if (isMoving)
             {
                 anim.Update(gameTime);
+                
             }
             else
             {

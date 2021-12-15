@@ -170,7 +170,10 @@ namespace DungeonCrawler
                         {
                             // renders door green if player pos is within 164px of a door
                             _spriteBatch.Draw(t.tileTexture, new Vector2(t.Position.X - t.tileTexture.Width / 2, t.Position.Y - t.tileTexture.Height / 2), Color.Green);
-                            
+
+                        }else if (t.MagicDoor)
+                        {
+                            _spriteBatch.Draw(t.tileTexture, new Vector2(t.Position.X - t.tileTexture.Width / 2, t.Position.Y - t.tileTexture.Height / 2), t.TextureColor);
                         }
                         else
                         {
@@ -181,7 +184,14 @@ namespace DungeonCrawler
                     }
                     else
                     {
-                        _spriteBatch.Draw(t.tileTexture, new Vector2(t.Position.X - t.tileTexture.Width / 2, t.Position.Y - t.tileTexture.Height / 2), Color.White);
+                         if (t.MagicDoor)
+                        {
+                            _spriteBatch.Draw(t.tileTexture, new Vector2(t.Position.X - t.tileTexture.Width / 2, t.Position.Y - t.tileTexture.Height / 2), t.TextureColor);
+                        }else
+                        {
+                            _spriteBatch.Draw(t.tileTexture, new Vector2(t.Position.X - t.tileTexture.Width / 2, t.Position.Y - t.tileTexture.Height / 2), Color.White);
+                        }
+                        
                     }
                 }
                 else
