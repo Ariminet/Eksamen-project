@@ -435,7 +435,7 @@ namespace DungeonCrawler
                                         // bottom center door
                                         if (y == 704 && x == 576)
                                         {
-                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, newMap - 5));
+                                            tiles.Add(new Tile(new Vector2(x, y), new Vector2(100, 100), door, newMap + 1 ));
                                         }
                                         // top center door
                                         if (maybeDoor == 1 && x == 576 && y == 64)
