@@ -67,18 +67,18 @@ namespace DungeonCrawler
         { 
             get { return tileCoord; }
         }
-
+        // Door Level Property so if tile is door it gets assigned new door level value
       public int DoorLevel
         {
             get { return doorLevel; }
         }
-
+        // if true this MagicDoor property will be assigned true and it get random spawn and door level value
         public bool MagicDoor
         {
             get { return magicDoor; }
             set { magicDoor = value; }
         }
-
+        // TextureColor property
         public Color TextureColor
         {
             get { return textureColor; }
@@ -547,12 +547,6 @@ namespace DungeonCrawler
             }
             
         }
-
        
-        
-        public static void Update(GameTime gameTime, GraphicsDeviceManager _graphics, Texture2D floor)
-        {
-            
-        }
     }
 }

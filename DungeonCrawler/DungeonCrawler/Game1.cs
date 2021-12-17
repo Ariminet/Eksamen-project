@@ -51,7 +51,6 @@ namespace DungeonCrawler
 
         // sounds
         Song bgSong;
-        SoundEffectInstance playerStep;
 
         Player player = new Player();
 

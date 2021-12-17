@@ -143,7 +143,13 @@ namespace DungeonCrawler
             }
         }
 
-        
+        /// <summary>
+        /// Draws Current Level on the screen
+        /// </summary>
+        /// <param name="_spriteBatch">Monogame Drawing ability</param>
+        /// <param name="player">Player Values for position and coordinates</param>
+        /// <param name="newMap">newMap = currentmap that needs to be rendered</param>
+        /// <param name="font">font is the game text style used for drawing information</param>
         public static void DrawMap(SpriteBatch _spriteBatch, Player player, int newMap, SpriteFont font)
         {
             foreach (Tile t in mapsList[newMap].map)
