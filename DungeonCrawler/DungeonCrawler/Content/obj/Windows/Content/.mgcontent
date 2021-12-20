@@ -6,6 +6,7 @@
   <SourceFiles>
     <File>C:/Users/Esben/OneDrive/Skrivebord/Eksamen-project/DungeonCrawler/DungeonCrawler/Content/assets/BackgroundImage/Castle.jpg</File>
     <File>C:/Users/Esben/OneDrive/Skrivebord/Eksamen-project/DungeonCrawler/DungeonCrawler/Content/assets/font/Fonten.spritefont</File>
+    <File>C:/Users/Esben/OneDrive/Skrivebord/Eksamen-project/DungeonCrawler/DungeonCrawler/Content/assets/gameImages/door/door.png</File>
     <File>C:/Users/Esben/OneDrive/Skrivebord/Eksamen-project/DungeonCrawler/DungeonCrawler/Content/assets/gameImages/floorSmall.png</File>
     <File>C:/Users/Esben/OneDrive/Skrivebord/Eksamen-project/DungeonCrawler/DungeonCrawler/Content/assets/gameImages/walls/wall-1.png</File>
     <File>C:/Users/Esben/OneDrive/Skrivebord/Eksamen-project/DungeonCrawler/DungeonCrawler/Content/assets/gameImages/walls/wall-2.png</File>
@@ -22,6 +23,7 @@
     <File>C:/Users/Esben/OneDrive/Skrivebord/Eksamen-project/DungeonCrawler/DungeonCrawler/Content/assets/player/heroUp.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

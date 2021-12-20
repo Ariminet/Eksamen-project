@@ -78,36 +78,61 @@ namespace DungeonCrawler
             }
         }
 
-        
-        public static void DrawMap(SpriteBatch _spriteBatch, Player player, int newMap)
+        /// <summary>
+        /// Draws Current Level on the screen
+        /// </summary>
+        /// <param name="_spriteBatch">Monogame Drawing ability</param>
+        /// <param name="player">Player Values for position and coordinates</param>
+        /// <param name="newMap">newMap = currentmap that needs to be rendered</param>
+        /// <param name="font">font is the game text style used for drawing information</param>
+        public static void DrawMap(SpriteBatch _spriteBatch, Player player, int newMap, SpriteFont font)
         {
             foreach (Tile t in mapsList[newMap].map)
             {
+              
                 
-                
-                if (t.tileTexture.ToString() == "./assets/gameImages/floorSmall") {
+                if (t.tileTexture.ToString() == "./assets/gameImages/floorSmall" || t.tileTexture.ToString() == "./assets/gameImages/door/door") {
                     int canMoveX = (int)t.TileCoord.X - (int)player.TileCoord.X;
                     int canMoveY = (int)t.TileCoord.Y - (int)player.TileCoord.Y;
 
                     if (Vector2.Distance(player.TilePosition, player.Position) < 10)
                     {
+
+                        
+                       
                         if (canMoveY <= player.Velocity && canMoveY >= -player.Velocity && player.TileCoord.X == t.TileCoord.X && player.TileCoord != t.TileCoord)
                         {
-
                             _spriteBatch.Draw(t.tileTexture, new Vector2(t.Position.X - t.tileTexture.Width / 2, t.Position.Y - t.tileTexture.Height / 2), Color.Red);
                         }
                         else if (canMoveX <= player.Velocity && canMoveX >= -player.Velocity && player.TileCoord.Y == t.TileCoord.Y && player.TileCoord != t.TileCoord)
                         {
                             _spriteBatch.Draw(t.tileTexture, new Vector2(t.Position.X - t.tileTexture.Width / 2, t.Position.Y - t.tileTexture.Height / 2), Color.Red);
+                        }else if ( Vector2.Distance(t.Position, player.Position) < 164 && t.tileTexture.ToString() == "./assets/gameImages/door/door")
+                        {
+                            // renders door green if player pos is within 164px of a door
+                            _spriteBatch.Draw(t.tileTexture, new Vector2(t.Position.X - t.tileTexture.Width / 2, t.Position.Y - t.tileTexture.Height / 2), Color.Green);
+
+                        }else if (t.MagicDoor)
+                        {
+                            _spriteBatch.Draw(t.tileTexture, new Vector2(t.Position.X - t.tileTexture.Width / 2, t.Position.Y - t.tileTexture.Height / 2), t.TextureColor);
                         }
                         else
                         {
                             _spriteBatch.Draw(t.tileTexture, new Vector2(t.Position.X - t.tileTexture.Width / 2, t.Position.Y - t.tileTexture.Height / 2), Color.White);
                         }
+
+                        
                     }
                     else
                     {
-                        _spriteBatch.Draw(t.tileTexture, new Vector2(t.Position.X - t.tileTexture.Width / 2, t.Position.Y - t.tileTexture.Height / 2), Color.White);
+                         if (t.MagicDoor)
+                        {
+                            _spriteBatch.Draw(t.tileTexture, new Vector2(t.Position.X - t.tileTexture.Width / 2, t.Position.Y - t.tileTexture.Height / 2), t.TextureColor);
+                        }else
+                        {
+                            _spriteBatch.Draw(t.tileTexture, new Vector2(t.Position.X - t.tileTexture.Width / 2, t.Position.Y - t.tileTexture.Height / 2), Color.White);
+                        }
+                        
                     }
                 }
                 else
@@ -117,6 +142,8 @@ namespace DungeonCrawler
 
 
                 }
+
+                
             }
 
 
