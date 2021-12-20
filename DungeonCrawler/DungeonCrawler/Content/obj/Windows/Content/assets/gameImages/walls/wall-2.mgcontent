@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/assets/gameImages/walls/wall-2.png</SourceFile>
-  <SourceTime>2021-12-09T12:14:33.435077+01:00</SourceTime>
-  <DestFile>C:/Users/Emil7/source/repos/DungeonCrawler/DungeonCrawler/Content/bin/Windows/Content/assets/gameImages/walls/wall-2.xnb</DestFile>
-  <DestTime>2021-12-09T12:45:48.2078042+01:00</DestTime>
+  <SourceFile>C:/Users/Esben/OneDrive/Skrivebord/Eksamen-project/DungeonCrawler/DungeonCrawler/Content/assets/gameImages/walls/wall-2.png</SourceFile>
+  <SourceTime>2021-12-09T13:47:27.0794038+01:00</SourceTime>
+  <DestFile>C:/Users/Esben/OneDrive/Skrivebord/Eksamen-project/DungeonCrawler/DungeonCrawler/Content/bin/Windows/Content/assets/gameImages/walls/wall-2.xnb</DestFile>
+  <DestTime>2021-12-18T18:40:06.8741683+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T18:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

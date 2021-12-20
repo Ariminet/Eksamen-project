@@ -14,6 +14,7 @@ namespace DungeonCrawler
         private Vector2 position = new Vector2(192, 192);
         public int speed = 128;
         private int velocity = 2;
+        public bool potionBuff = false;
         private bool isSneaking = false;
         private bool isHit = false;
         private Vector2 tileCoord = new Vector2(1, 1);
@@ -26,7 +27,7 @@ namespace DungeonCrawler
 
         private Vector2 tilePosition = new Vector2(192, 192);
 
-
+        
 
         public SpriteAnimation anim;
 
@@ -38,8 +39,9 @@ namespace DungeonCrawler
             set { position = value; }
         }
         public int Velocity
-        {
-            get { return velocity; }
+        { // benytter en ternary til at sætte potionbuffen på hvis den er true
+            get { return velocity + (potionBuff ? 3 : 0); }
+            set { velocity = value; }
         }
         public Vector2 TileCoord
         {
@@ -80,6 +82,11 @@ namespace DungeonCrawler
             set { tilePosition = value; }
         }
 
+        public KeyboardState KStateOld
+        {
+            get { return kStateOld; }
+        }
+
         public void Running(KeyboardState kState)
         {
             if (kState.IsKeyDown(Keys.Q) && kStateOld.IsKeyUp(Keys.Q) && Vector2.Distance(tilePosition, position) <= 10)
@@ -99,17 +106,17 @@ namespace DungeonCrawler
         {
             if (mState.LeftButton == ButtonState.Pressed)
             {
-               
-                    pickedPos = new Vector2(mState.X, mState.Y);
-
+                
+                pickedPos = new Vector2(mState.X, mState.Y);
             }
+          
         }
         public void MovePosition(KeyboardState kState, float dt)
         {
             kStateOld = kState;
-            isMoving = false;
 
-            
+
+
             if (Vector2.Distance(tilePosition, position) < 10)
             {
                 if (StepsY == 0)
@@ -124,25 +131,32 @@ namespace DungeonCrawler
                 position = tilePosition;
             }
 
-            if (stepsX <= velocity && stepsX > 0)
+            if (stepsX <= Velocity && stepsX > 0)
             {
                 direction = Dir.Right;
                 isMoving = true;
             }
-            if (stepsX >= -velocity && stepsX < 0)
+            else if (stepsX >= -Velocity && stepsX < 0)
             {
                 direction = Dir.Left;
                 isMoving = true;
             }
-            if (stepsY >= -velocity && stepsY < 0)
+            else if (stepsY >= -Velocity && stepsY < 0)
             {
                 direction = Dir.Up;
                 isMoving = true;
             }
-            if (stepsY <= velocity && stepsY > 0)
+            else if (stepsY <= Velocity && stepsY > 0)
             {
                 direction = Dir.Down;
                 isMoving = true;
+            }
+            // når den har tjekket for alle spillerens bevægelsesfelter, skal isMoving sættes til false, men når bevægelsen er ovre er isMoving stadig true
+            // derfor laves en else if der sætter isMoving til false samtidig med at potionBuffen sættes til false. Derved fjernes buffen igen. 
+            else if (isMoving)
+            {
+                isMoving = false;
+                potionBuff = false;
             }
             if (isMoving)
             {
@@ -164,6 +178,7 @@ namespace DungeonCrawler
                         break;
                 }
             }
+            
 
         }
 
@@ -181,6 +196,8 @@ namespace DungeonCrawler
                 anim.setFrame(0);
             }
         }
+
+        
         public void Update(GameTime gameTime)
         {
             KeyboardState kState = Keyboard.GetState();
@@ -189,6 +206,10 @@ namespace DungeonCrawler
 
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+            if (kState.IsKeyDown(Keys.B) )
+            {
+                kStateOld = kState;
+            }
             //Pick location player wants to go to
             PickNewPostion(mState);
             //Check keyboard if Q is pressed then changed movement to new speed
@@ -200,6 +221,7 @@ namespace DungeonCrawler
             //and when it stands still
             AnimateMovement(gameTime);
 
+            
            
             
         }

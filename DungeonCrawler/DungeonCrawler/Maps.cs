@@ -57,40 +57,7 @@ namespace DungeonCrawler
 
 
                             player.TilePosition = t.Position;
-
-                            switch (moveX)
-                            {
-                                case 5:
-                                    player.StepsX = moveX;
-                                    break;
-                                case -5:
-                                    player.StepsX = -5;
-                                    break;
-                                case 4:
-                                    player.StepsX = moveX;
-                                    break;
-                                case -4:
-                                    player.StepsX = -4;
-                                    break;
-                                case 3:
-                                    player.StepsX = moveX;
-                                    break;
-                                case -3:
-                                    player.StepsX = -3;
-                                    break;
-                                case 2:
-                                    player.StepsX = moveX;
-                                    break;
-                                case -2:
-                                    player.StepsX = -2;
-                                    break;
-                                case 1:
-                                    player.StepsX = moveX;
-                                    break;
-                                case -1:
-                                    player.StepsX = -1;
-                                    break;
-                            }
+                            player.StepsX = moveX;
                             player.TileCoord = t.TileCoord;
 
 
@@ -99,39 +66,7 @@ namespace DungeonCrawler
                         {
 
                             player.TilePosition = t.Position;
-                            switch (moveY)
-                            {
-                                case 5:
-                                    player.StepsY = moveY;
-                                    break;
-                                case -5:
-                                    player.StepsY = -5;
-                                    break;
-                                case 4:
-                                    player.StepsY = moveY;
-                                    break;
-                                case -4:
-                                    player.StepsY = -4;
-                                    break;
-                                case 3:
-                                    player.StepsY = moveY;
-                                    break;
-                                case -3:
-                                    player.StepsY = -3;
-                                    break;
-                                case 2:
-                                    player.StepsY = moveY;
-                                    break;
-                                case -2:
-                                    player.StepsY = -2;
-                                    break;
-                                case 1:
-                                    player.StepsY = moveY;
-                                    break;
-                                case -1:
-                                    player.StepsY = -1;
-                                    break;
-                            }
+                            player.StepsY = moveY;
                             player.TileCoord = t.TileCoord;
 
                         }
