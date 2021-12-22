@@ -74,6 +74,7 @@ namespace DungeonCrawler
                 monsterLevel = random.Next(min, max);
                     if(monsterLevel == currentLevel)
                     {
+                        
                         break;
                     }
                 }
@@ -84,7 +85,6 @@ namespace DungeonCrawler
         public void MovePosition(float dt)
         {
             isMoving = false;
-            monTileCord = player.Position;
 
             if(Vector2.Distance(monTileCord, monPosition) < 10)
             {
@@ -178,6 +178,7 @@ namespace DungeonCrawler
 
             if (monsterLevel == currentLevel)
             {
+
                 if (currentRound >= monsterRound)
                 {
                     
@@ -186,6 +187,22 @@ namespace DungeonCrawler
 
                 }
                 //animating movement
+                if (monDoor.X == 128 * 8 + 64)
+                {
+                    direction = Dir.Left;
+                }
+                if (monDoor.X == 128 * 1 + 64)
+                {
+                    direction = Dir.Up;
+                }
+                if (monDoor.Y == 128 * 4 + 64)
+                {
+                    direction = Dir.Right;
+                }
+                if (monDoor.Y == 128 * 1 + 64)
+                {
+                    direction = Dir.Down;
+                }
                 monPosition = monDoor;
 
             }
