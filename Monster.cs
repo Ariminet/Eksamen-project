@@ -190,20 +190,24 @@ namespace DungeonCrawler
                 if (monDoor.X == 128 * 8 + 64)
                 {
                     direction = Dir.Left;
+                    monPosition = monDoor;
                 }
                 if (monDoor.X == 128 * 1 + 64)
                 {
                     direction = Dir.Up;
+                    monPosition = monDoor;
                 }
                 if (monDoor.Y == 128 * 4 + 64)
                 {
                     direction = Dir.Right;
+                    monPosition = monDoor;
                 }
                 if (monDoor.Y == 128 * 1 + 64)
                 {
                     direction = Dir.Down;
+                    monPosition = monDoor;
                 }
-                monPosition = monDoor;
+                
 
             }
         }
