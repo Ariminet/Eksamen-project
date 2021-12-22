@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using Microsoft.Xna.Framework.Audio;
 namespace DungeonCrawler
 {
     class Player
@@ -12,11 +12,13 @@ namespace DungeonCrawler
 
         public Vector2 pickedPos;
         private Vector2 position = new Vector2(192, 192);
+
         public int speed = 128;
         private int velocity = 2;
         private bool isSneaking = false;
         private bool isHit = false;
         private Vector2 tileCoord = new Vector2(1, 1);
+        private Vector2 oldTileCoord = new Vector2(0, 0);
         private KeyboardState kStateOld = Keyboard.GetState();
         private Dir direction = Dir.Down;
         private bool isMoving = false;
@@ -24,8 +26,13 @@ namespace DungeonCrawler
         private int stepsX = 0;
         private int stepsY = 0;
 
+        public static int round = Game1.round;
+
         private Vector2 tilePosition = new Vector2(192, 192);
 
+        public bool enterDoor = false;
+
+        private bool arrived = false; 
 
 
         public SpriteAnimation anim;
@@ -46,7 +53,12 @@ namespace DungeonCrawler
             get { return tileCoord; }
             set { tileCoord = value; }
         }
-        
+        public Vector2 OldTileCoord
+        {
+            get { return oldTileCoord; }
+            set { oldTileCoord = value; }
+        }
+
         public bool IsSneaking
         {
             get { return isSneaking; }
@@ -97,31 +109,53 @@ namespace DungeonCrawler
                 }
             }
         }
+
+        public void EnterDoor(KeyboardState kState)
+        {
+                if (kState.IsKeyDown(Keys.E) && kStateOld.IsKeyUp(Keys.E))
+                {
+                    enterDoor = true;
+                    oldTileCoord = tileCoord;
+                }
+        }
         public void PickNewPostion(MouseState mState)
         {
             if (mState.LeftButton == ButtonState.Pressed)
             {
                
                     pickedPos = new Vector2(mState.X, mState.Y);
+                
 
             }
+            if (isMoving)
+            {
+                arrived = false;
+            }
         }
+
         public void MovePosition(KeyboardState kState, float dt)
         {
             kStateOld = kState;
             isMoving = false;
 
             
-            if (Vector2.Distance(tilePosition, position) < 10)
+            if (Vector2.Distance(tilePosition, position) < 10 )
             {
+                
                 if (StepsY == 0)
                 {
                     stepsX = 0;
+                    if(arrived == false)
+                    {
+                        Game1.round++;
+                        arrived = true;
+                    }
                 }
                 if (stepsX == 0)
                 {
                     stepsY = 0;
                 }
+                
 
                 position = tilePosition;
             }
@@ -157,12 +191,15 @@ namespace DungeonCrawler
                         break;
                     case Dir.Up:
                         position.Y += moveDistance.Y * (speed * dt);
+                        
                         break;
                     case Dir.Left:
                         position.X += moveDistance.X * (speed * dt);
+                        
                         break;
                     case Dir.Right:
                         position.X += moveDistance.X * (speed * dt);
+                        
                         break;
                 }
             }
@@ -177,6 +214,7 @@ namespace DungeonCrawler
             if (isMoving)
             {
                 anim.Update(gameTime);
+                
             }
             else
             {
@@ -195,6 +233,8 @@ namespace DungeonCrawler
             PickNewPostion(mState);
             //Check keyboard if Q is pressed then changed movement to new speed
             Running(kState);
+            //Check keyboard if E is pressed then changed Level 
+            EnterDoor(kState);
             //Calculated the amount of pixel to move over a period of time while locking movement features 
             MovePosition(kState, dt);
             
@@ -202,8 +242,10 @@ namespace DungeonCrawler
             //and when it stands still
             AnimateMovement(gameTime);
 
-           
             
+
+
+
         }
 
     }
